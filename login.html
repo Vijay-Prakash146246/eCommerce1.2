@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <style>
+          #navbaar
+          {
+               display: flex;
+               justify-content: space-around;
+               background-color: #027aff;
+               padding: 20px;
+               font-size: 25px;
+               margin-top: 20px;
+               border-radius: 10px;
+          }
+          a
+          {
+          
+               cursor: pointer;
+               text-decoration: none;
+          }
+          a:hover
+          {
+               color: white;
+          }
+          .Himg
+          {
+               height: 60%;
+               width: 100%;
+               padding-top: 10px;
+              
+          }
+
+          #form
+          {
+               width: 20%;
+               margin: auto;
+               line-height: -10px;
+               margin-top: 100px;
+          }
+          h1{
+               color: red;
+               margin-left: 100px;
+               margin-top: 50px;
+               margin-bottom: 0px;
+          }
+        h4
+        {
+             margin-bottom: 5px;
+             margin-top: 5px;
+        }
+        input 
+        {
+             height: 30px;
+             width: 300px;
+             text-align: center;
+        }
+     </style>
+</head>
+<body>
+     <div id="navbaar">
+          <div><a href="index.html">Home</a></div>
+          <div><a href="men.html"  target="_blank">Men</a></div>
+          <div><a href="women.html" target="_blank">Women</a></div>
+          <div><a href="signup.html" target="_blank">SignUp</a></div>
+          <div><a href="login.html"  target="_blank">Login</a></div>
+     </div>
+     
+
+     <form action="" id="form">
+          <h1>Login</h1>
+         <h4>Email</h4>
+         <input type="email" id="email" placeholder="Enter email">
+         <h4>Password</h4>
+         <input type="password" id="pass" placeholder="Enter Password">
+         <br>
+         <br>
+         <input type="Submit" value="Continue" style="background-color: #f1c65a;border-radius: 10px;">
+     </form>
+
+</body>
+</html>
+<script>
+     document.querySelector("#form").addEventListener("submit",loginFun);
+     var regdUsers=JSON.parse(localStorage.getItem("userCred"));
+     function loginFun()
+     {
+          event.preventDefault();
+          var enterEmail=document.querySelector("#email").value;
+          var enterPass=document.querySelector("#pass").value;
+          var count=0;
+          for(var i=0;i<regdUsers.length;i++)
+          {
+               var x =regdUsers[i];
+               if(x.email==enterEmail && x.pass==enterPass)
+               {
+                    count=1;
+               }
+          }
+          if(count==1)
+          {
+               alert("login successful");
+               window.location.href="index.html";
+          }
+          else
+          {
+               alert("Login Failed");
+          }
+          // console.log("inside f1");
+          document.querySelector("#email").value="";
+          document.querySelector("#pass").value="";
+     }
+</script>
